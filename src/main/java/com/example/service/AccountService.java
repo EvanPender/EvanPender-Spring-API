@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.sql.SQLDataException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +21,11 @@ public class AccountService {
         return null;
     }
 
-    public Account register(String username, String password) {
-        if (password.length() >= 4 && !username.isEmpty() && accountRepository.findByUsername(username) == null) {
+    public Account register(String username, String password) throws SQLDataException {
+        if (accountRepository.findByUsername(username) != null) {
+            throw new SQLDataException();
+        }
+        if (password.length() >= 4 && !username.isEmpty()) {
             Account account = new Account(username, password);
             return accountRepository.save(account);
         }

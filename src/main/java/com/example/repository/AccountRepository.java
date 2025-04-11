@@ -9,6 +9,4 @@ import com.example.entity.Account;
 public interface AccountRepository extends CrudRepository<Account, Integer> {
     public Account findByUsername(String username);
     public Account findById(int accountId);
-    public boolean existsById(int accountId);
-    public Account save(Account account);
 }

@@ -12,6 +12,4 @@ public interface MessageRepository extends CrudRepository<Message, Integer>{
     public Message findById(int id);
     public List<Message> findAll();
     public List<Message> findByPostedBy(int account_id);
-    public Message deleteById(int id);
-    public Message save(Message message);
 }
