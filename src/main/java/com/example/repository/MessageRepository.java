@@ -1,4 +1,17 @@
 package com.example.repository;
 
-public interface MessageRepository {
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.entity.Message;
+
+@Repository
+public interface MessageRepository extends CrudRepository<Message, Integer>{
+    public Message findById(int id);
+    public List<Message> findAll();
+    public List<Message> findByPostedBy(int account_id);
+    public Message deleteById(int id);
+    public Message save(Message message);
 }
